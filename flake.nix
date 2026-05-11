@@ -25,6 +25,11 @@
       perSystem =
         { config, pkgs, ... }:
         {
+          checks.hosts = import ./tests/hosts.nix {
+            inherit pkgs;
+            inherit (pkgs) lib;
+          };
+
           treefmt = {
             projectRootFile = "flake.nix";
 

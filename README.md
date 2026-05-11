@@ -34,9 +34,19 @@ os is for machines/users that want:
 
 ## Conventions
 
+Host files live in `hosts/<name>.nix` and become `nixosConfigurations.<name>`.
+
+Host metadata lives in `hosts/default.nix`; `_default` applies to every host, and host-specific keys override it.
+
 Prefix scratch files with `_` when they should be ignored by automatic imports or discovery.
 
 ## Validation
+
+Run all checks with:
+
+```sh
+nix flake check
+```
 
 Build and run the smoke-test VM with:
 
