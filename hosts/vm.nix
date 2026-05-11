@@ -12,12 +12,6 @@
     fsType = lib.mkDefault "ext4";
   };
 
-  users.users.vereis = {
-    isNormalUser = true;
-    initialPassword = "vereis";
-    extraGroups = [ "wheel" ];
-  };
-
   virtualisation.vmVariant.virtualisation = {
     cores = 2;
     memorySize = 2048;

@@ -40,6 +40,10 @@ Host metadata lives in `hosts/default.nix`; `_default` applies to every host, an
 
 Prefix scratch files with `_` when they should be ignored by automatic imports or discovery.
 
+## API
+
+`os.user` declares the primary host user. It defaults to an `os` user with password `os` for early VM smoke tests.
+
 ## Validation
 
 Run all checks with:
@@ -55,13 +59,13 @@ nix build .#nixosConfigurations.vm.config.system.build.vm
 ./result/bin/run-vm-vm
 ```
 
-The `vm` host is a local smoke-test target and uses the throwaway login `vereis` / `vereis`.
+The `vm` host is a local smoke-test target and uses the throwaway login `os` / `os`.
 
 ## TODO
 
 - [x] implement ci from the start
 - [x] bootstrap flake with minimal VM host
-- [ ] define the public `os.*` option namespace
+- [x] define the public `os.*` option namespace
 - [ ] add package accumulation
 - [ ] add home manager
 - [x] add a host builder w/ auto-imports

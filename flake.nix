@@ -30,6 +30,11 @@
             inherit (pkgs) lib;
           };
 
+          checks.os = import ./tests/os.nix {
+            inherit pkgs;
+            inherit (pkgs) lib;
+          };
+
           treefmt = {
             projectRootFile = "flake.nix";
 
