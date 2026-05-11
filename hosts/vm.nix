@@ -1,4 +1,9 @@
-{ lib, modulesPath, ... }:
+{
+  lib,
+  modulesPath,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
@@ -6,6 +11,8 @@
   ];
 
   boot.loader.grub.enable = lib.mkDefault false;
+
+  os.packages = [ pkgs.cowsay ];
 
   fileSystems."/" = {
     device = lib.mkDefault "/dev/disk/by-label/nixos";
