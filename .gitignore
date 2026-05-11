@@ -1,0 +1,12 @@
+.direnv/
+.envrc
+result
+result-*
+*.qcow2
+*.raw
+*.img
+*.iso
+*.swp
+*.swo
+*~
+.DS_Store
