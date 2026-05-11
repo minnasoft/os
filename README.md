@@ -32,14 +32,29 @@ os is for machines/users that want:
 - some leaky abstractions and patterns to make things easier
 - your configs to be pretty
 
+## Conventions
+
+Prefix scratch files with `_` when they should be ignored by automatic imports or discovery.
+
+## Validation
+
+Build and run the smoke-test VM with:
+
+```sh
+nix build .#nixosConfigurations.vm.config.system.build.vm
+./result/bin/run-vm-vm
+```
+
+The `vm` host is a local smoke-test target and uses the throwaway login `vereis` / `vereis`.
+
 ## TODO
 
-- [ ] implement ci from the start
-- [ ] bootstrap flake with minimal VM host
+- [x] implement ci from the start
+- [x] bootstrap flake with minimal VM host
 - [ ] define the public `os.*` option namespace
 - [ ] add package accumulation
 - [ ] add home manager
-- [ ] add a host builder w/ auto-imports
+- [x] add a host builder w/ auto-imports
 - [ ] add recursive module auto-imports
 - [ ] implement profiles
 - [ ] add tailscale

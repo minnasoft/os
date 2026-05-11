@@ -17,6 +17,7 @@
       ];
 
       imports = [
+        ./flake/hosts.nix
         inputs.treefmt-nix.flakeModule
         inputs.git-hooks.flakeModule
       ];
