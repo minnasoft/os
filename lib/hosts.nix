@@ -46,6 +46,7 @@ let
       };
 
       modules = [
+        inputs.home-manager.nixosModules.home-manager
         ../modules
         {
           networking.hostName = lib.mkDefault name;

@@ -22,13 +22,31 @@
         description = "Extra groups assigned to the primary os user.";
       };
     };
+
+    packages = lib.mkOption {
+      type = lib.types.listOf lib.types.package;
+      default = [ ];
+      description = "Packages installed for the primary os user.";
+    };
   };
 
-  config.users.users.${config.os.user.name} = {
-    inherit (config.os.user) extraGroups;
-    isNormalUser = true;
-  }
-  // lib.optionalAttrs (config.os.user.password != null) {
-    initialPassword = config.os.user.password;
+  config = {
+    users.users.${config.os.user.name} = {
+      inherit (config.os.user) extraGroups;
+      isNormalUser = true;
+    }
+    // lib.optionalAttrs (config.os.user.password != null) {
+      initialPassword = config.os.user.password;
+    };
+
+    home-manager = {
+      useGlobalPkgs = true;
+      useUserPackages = true;
+
+      users.${config.os.user.name}.home = {
+        inherit (config.system) stateVersion;
+        inherit (config.os) packages;
+      };
+    };
   };
 }

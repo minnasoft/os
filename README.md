@@ -44,6 +44,8 @@ Prefix scratch files with `_` when they should be ignored by automatic imports o
 
 `os.user` declares the primary host user. It defaults to an `os` user with password `os` for early VM smoke tests.
 
+`os.packages` adds packages to the primary user's Home Manager `home.packages`; hosts built through `mkHost` import Home Manager automatically.
+
 ## Validation
 
 Run all checks with:
@@ -66,8 +68,8 @@ The `vm` host is a local smoke-test target and uses the throwaway login `os` / `
 - [x] implement ci from the start
 - [x] bootstrap flake with minimal VM host
 - [x] define the public `os.*` option namespace
-- [ ] add package accumulation
-- [ ] add home manager
+- [x] add package accumulation
+- [x] add home manager
 - [x] add a host builder w/ auto-imports
 - [ ] add recursive module auto-imports
 - [ ] implement profiles

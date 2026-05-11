@@ -6,6 +6,7 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     treefmt-nix.url = "github:numtide/treefmt-nix";
     git-hooks.url = "github:cachix/git-hooks.nix";
+    home-manager.url = "github:nix-community/home-manager";
   };
 
   outputs =
