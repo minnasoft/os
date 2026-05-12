@@ -41,6 +41,11 @@
               inherit pkgs;
               inherit (pkgs) lib;
             };
+
+            services = import ./tests/services.nix {
+              inherit pkgs;
+              inherit (pkgs) lib;
+            };
           };
 
           treefmt = {

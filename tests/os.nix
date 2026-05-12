@@ -8,7 +8,26 @@ let
         {
           options = {
             users.users = lib.mkOption {
-              type = lib.types.attrs;
+              type = lib.types.attrsOf (
+                lib.types.submodule {
+                  options = {
+                    extraGroups = lib.mkOption {
+                      type = lib.types.listOf lib.types.str;
+                      default = [ ];
+                    };
+
+                    initialPassword = lib.mkOption {
+                      type = lib.types.nullOr lib.types.str;
+                      default = null;
+                    };
+
+                    isNormalUser = lib.mkOption {
+                      type = lib.types.bool;
+                      default = false;
+                    };
+                  };
+                }
+              );
               default = { };
             };
 
