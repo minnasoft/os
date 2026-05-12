@@ -9,9 +9,8 @@ Systems should be simple; as simple as this:
 ```nix
 {
   os = {
-    profile.workstation = true;
-    tailscale = true;
-    ephemeral = true;
+    tailscale.enable = true;
+    docker.enable = true;
   };
 }
 ```
@@ -46,6 +45,12 @@ Prefix scratch files with `_` when they should be ignored by automatic imports o
 
 `os.packages` adds packages to the primary user's Home Manager `home.packages`; hosts built through `mkHost` import Home Manager automatically.
 
+`os.ssh.enable` enables OpenSSH with fail2ban, primary-user-only access, X11 forwarding, password login disabled, empty passwords disabled, and root login disabled. It defaults to `true`.
+
+`os.tailscale.enable` enables Tailscale and opens the Tailscale UDP firewall port. When `os.ssh.enable` is also true, SSH is reachable only on the tailnet interface without opening SSH globally.
+
+`os.docker.enable` enables rootless Docker, Docker Compose, the rootless Docker socket environment variable, user lingering for the primary user, and Docker's rotating `local` log driver.
+
 ## Validation
 
 Run all checks with:
@@ -73,9 +78,10 @@ The `vm` host is a local smoke-test target and uses the throwaway login `os` / `
 - [x] add a host builder w/ auto-imports
 - [x] add recursive module auto-imports
 - [ ] implement profiles
-- [ ] add tailscale
+- [x] add tailscale
 - [ ] add ephemeral
-- [ ] add docker
+- [ ] add secrets
+- [x] add docker
 - [ ] add gaming
 - [ ] add bluetooth
 - [ ] add audio
