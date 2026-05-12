@@ -12,7 +12,12 @@
 
   boot.loader.grub.enable = lib.mkDefault false;
 
-  os.packages = [ pkgs.cowsay ];
+  os = {
+    docker.enable = true;
+    tailscale.enable = true;
+
+    packages = [ pkgs.cowsay ];
+  };
 
   fileSystems."/" = {
     device = lib.mkDefault "/dev/disk/by-label/nixos";
