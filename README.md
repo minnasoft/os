@@ -71,7 +71,7 @@ The `vm` host is a local smoke-test target and uses the throwaway login `os` / `
 - [x] add package accumulation
 - [x] add home manager
 - [x] add a host builder w/ auto-imports
-- [ ] add recursive module auto-imports
+- [x] add recursive module auto-imports
 - [ ] implement profiles
 - [ ] add tailscale
 - [ ] add ephemeral

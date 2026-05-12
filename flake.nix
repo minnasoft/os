@@ -26,14 +26,21 @@
       perSystem =
         { config, pkgs, ... }:
         {
-          checks.hosts = import ./tests/hosts.nix {
-            inherit pkgs;
-            inherit (pkgs) lib;
-          };
+          checks = {
+            hosts = import ./tests/hosts.nix {
+              inherit pkgs;
+              inherit (pkgs) lib;
+            };
 
-          checks.os = import ./tests/os.nix {
-            inherit pkgs;
-            inherit (pkgs) lib;
+            modules = import ./tests/modules.nix {
+              inherit pkgs;
+              inherit (pkgs) lib;
+            };
+
+            os = import ./tests/os.nix {
+              inherit pkgs;
+              inherit (pkgs) lib;
+            };
           };
 
           treefmt = {
