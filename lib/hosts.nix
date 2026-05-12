@@ -3,17 +3,15 @@
 let
   inherit (inputs.nixpkgs) lib;
 
-  isHostFile =
-    name: type:
-    type == "regular"
-    && lib.hasSuffix ".nix" name
-    && name != "default.nix"
-    && !(lib.hasPrefix "_" name);
+  files = import ./files.nix { inherit lib; };
 
   discover =
     dir:
-    lib.mapAttrsToList (name: _: lib.removeSuffix ".nix" name) (
-      lib.filterAttrs isHostFile (builtins.readDir dir)
+    map (path: lib.removeSuffix ".nix" (builtins.baseNameOf path)) (
+      files.discover {
+        inherit dir;
+        recursive = false;
+      }
     );
 
   hostConfig =
